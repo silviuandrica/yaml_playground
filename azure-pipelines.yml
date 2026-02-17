@@ -16,6 +16,9 @@ parameters:
 
 variables:
   varFromStringWithhoutValues: ${{ parameters.stringWithoutValues}}
+  varWithFormatTemplate: ${{ format('Hello {0} {1}', parameters.stringWithoutValues, parameters.stringWithValues )}}
+  varWithFormatRuntime: $[ format('Hello {0} {1}', '${{parameters.stringWithoutValues}}', '${{parameters.stringWithValues}}' ) ]
+
 
 steps:
 - script: echo ${{parameters.stringWithoutValues}}
@@ -26,3 +29,7 @@ steps:
   displayName: variables.varFromStringWithhoutValues
 - script: echo $(varFromStringWithhoutValues)
   displayName: varFromStringWithhoutValues
+- script: echo $(varWithFormatTemplate)
+  displayName: varWithFormatTemplate
+- script: echo $(varWithFormatRuntime)
+  displayName: varWithFormatRuntime    

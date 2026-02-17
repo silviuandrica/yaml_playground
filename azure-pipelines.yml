@@ -14,8 +14,15 @@ parameters:
   - value1
   - value2
 
+variables:
+  varFromStringWithhoutValues: ${{ parameters.stringWithoutValues}}
+
 steps:
 - script: echo ${{parameters.stringWithoutValues}}
-  displayName: String without values
+  displayName: parameters.stringWithoutValues
 - script: echo ${{parameters.stringWithValues}}
-  displayName: String with values
+  displayName: parameters.stringWithValues
+- script: echo ${{variables.varFromStringWithhoutValues}}
+  displayName: variables.varFromStringWithhoutValues
+- script: echo $(varFromStringWithhoutValues)
+  displayName: varFromStringWithhoutValues

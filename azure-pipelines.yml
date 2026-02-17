@@ -6,8 +6,10 @@ pool:
 parameters:
 - name: stringWithoutValues
   type: string
+  default: silviu
 - name: stringWithValues
   type: string  
+  default: value1
   values:
   - value1
   - value2

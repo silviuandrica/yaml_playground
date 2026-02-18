@@ -3,6 +3,8 @@ trigger: none
 pool:
   vmImage: ubuntu-latest
 
+name: $(Date:yyyyMMdd).$(Rev:r) ${{ parameters.stringWithoutValues }}
+
 parameters:
 - name: stringWithoutValues
   type: string
@@ -33,3 +35,7 @@ steps:
   displayName: varWithFormatTemplate
 - script: echo $(varWithFormatRuntime)
   displayName: varWithFormatRuntime    
+- script: echo $(Build.BuildNumber)
+  displayName: Build.BuildNumber   
+- script: echo $(Build.SourceVersionMessage)
+  displayName: Build.SourceVersionMessage   

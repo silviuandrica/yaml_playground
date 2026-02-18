@@ -38,4 +38,9 @@ steps:
 - script: echo $(Build.BuildNumber)
   displayName: Build.BuildNumber   
 - script: echo $(Build.SourceVersionMessage)
-  displayName: Build.SourceVersionMessage   
+  displayName: Build.SourceVersionMessage  
+- script: echo $(System.StageDisplayName)
+  displayName: System.StageDisplayName  
+- script: echo $(System.StageName)
+  displayName: System.StageName      
+   

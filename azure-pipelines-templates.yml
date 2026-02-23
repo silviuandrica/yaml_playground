@@ -21,8 +21,8 @@ variables:
 extends:
   template: extends-template.yml
   parameters:
-    name: ${{ parameters.varFromStringWithhoutValues }}
+    name: ${{ parameters.stringWithoutValues }}
     stages: 
     - template: include-template.yml
       parameters:
-        name: ${{ parameters.varFromStringWithhoutValues }}
+        name: ${{ parameters.stringWithoutValues }}

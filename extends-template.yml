@@ -1,7 +1,7 @@
 parameters:
 - name: name
   type: string
-- name: stages:
+- name: stages
   type: stageList
 
 stages:

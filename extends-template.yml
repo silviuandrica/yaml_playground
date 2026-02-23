@@ -1,0 +1,14 @@
+parameters:
+- name: name
+  type: string
+- name: stages:
+  type: stageList
+
+stages:
+- stage: extends
+  jobs:
+  - job:
+    steps: 
+    - script: echo ${{ parameters.name }}
+- ${{ each stage in parameters.stages }}:
+  - ${{ stage }}

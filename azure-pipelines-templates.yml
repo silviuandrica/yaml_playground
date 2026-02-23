@@ -1,12 +1,15 @@
+trigger: none
+
 parameters:
 - name: name
   type: string
+  default: Silviu
 
 extends:
   template: extends-template.yml
   parameters:
     name: ${{ parameters.name }}
     stages: 
-    - include: include-template.yml
+    - template: include-template.yml
       parameters:
         name: ${{ parameters.name }}

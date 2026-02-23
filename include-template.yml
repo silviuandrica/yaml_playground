@@ -1,0 +1,10 @@
+parameters:
+- name: name
+  type: string
+
+stages:
+- stage: extends
+  jobs:
+  - job:
+    steps: 
+    - script: echo ${{ parameters.name }}

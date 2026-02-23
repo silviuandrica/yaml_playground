@@ -1,9 +1,17 @@
 trigger: none
 
+name: $(Date:yyyyMMdd).$(Rev:r) ${{ parameters.stringWithoutValues }}
+
 parameters:
-- name: name
+- name: stringWithoutValues
   type: string
-  default: Silviu
+  default: silviu
+- name: stringWithValues
+  type: string  
+  default: value1
+  values:
+  - value1
+  - value2
 
 variables:
   varFromStringWithhoutValues: ${{ parameters.stringWithoutValues}}
@@ -13,8 +21,8 @@ variables:
 extends:
   template: extends-template.yml
   parameters:
-    name: ${{ parameters.name }}
+    name: ${{ parameters.varFromStringWithhoutValues }}
     stages: 
     - template: include-template.yml
       parameters:
-        name: ${{ parameters.name }}
+        name: ${{ parameters.varFromStringWithhoutValues }}

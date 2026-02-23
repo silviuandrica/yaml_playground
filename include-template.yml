@@ -8,3 +8,18 @@ stages:
   - job:
     steps: 
     - script: echo ${{ parameters.name }}
+      displayName: parameters.name
+    - script: echo $(varFromStringWithhoutValues)
+      displayName: varFromStringWithhoutValues
+    - script: echo $(varWithFormatTemplate)
+      displayName: varWithFormatTemplate
+    - script: echo $(varWithFormatRuntime)
+      displayName: varWithFormatRuntime    
+    - script: echo $(Build.BuildNumber)
+      displayName: Build.BuildNumber   
+    - script: echo $(Build.SourceVersionMessage)
+      displayName: Build.SourceVersionMessage  
+    - script: echo $(System.StageDisplayName)
+      displayName: System.StageDisplayName  
+    - script: echo $(System.StageName)
+      displayName: System.StageName  

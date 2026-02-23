@@ -3,7 +3,7 @@ parameters:
   type: string
 
 stages:
-- stage: extends
+- stage: include
   jobs:
   - job:
     steps: 

@@ -1,0 +1,12 @@
+parameters:
+- name: name
+  type: string
+
+extends:
+  template: extends-template.yml
+  parameters:
+    name: ${{ parameters.name }}
+    stages: 
+    - include: include-template.yml
+      parameters:
+        name: ${{ parameters.name }}

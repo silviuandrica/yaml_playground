@@ -5,6 +5,11 @@ parameters:
   type: string
   default: Silviu
 
+variables:
+  varFromStringWithhoutValues: ${{ parameters.stringWithoutValues}}
+  varWithFormatTemplate: ${{ format('Hello {0} {1}', parameters.stringWithoutValues, parameters.stringWithValues )}}
+  varWithFormatRuntime: $[ format('Hello {0} {1}', '${{parameters.stringWithoutValues}}', '${{parameters.stringWithValues}}' ) ]
+  
 extends:
   template: extends-template.yml
   parameters:

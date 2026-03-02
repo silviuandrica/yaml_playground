@@ -21,7 +21,7 @@ variables:
 extends:
   template: azure-pipelines-intermediate-template.yml
   parameters:
-    name: ${{ parameters.stringWithoutValues }}
+    stringWithoutValues: ${{ parameters.stringWithoutValues }}
     stages: 
     - template: include-template.yml
       parameters:

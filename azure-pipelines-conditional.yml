@@ -1,0 +1,37 @@
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+name: $(Date:yyyyMMdd).$(Rev:r) ${{ parameters.stringWithoutValues }}
+
+parameters:
+- name: stringWithoutValues
+  type: string
+  default: silviu
+- name: condition1
+  type: boolean
+  default: false
+- name: condition2
+  type: string  
+- name: branchOptions
+  displayName: Source branch options
+  type: object
+  default:
+    - refs/heads/main
+    - refs/heads/test  
+
+variables:
+  varFromStringWithhoutValues: ${{ parameters.stringWithoutValues}}
+
+steps:
+- ${{ if parameters.condition1 }}:
+  - script: echo ${{parameters.stringWithoutValues}}
+    displayName: parameters.stringWithoutValues
+- ${{ if eq(parameters.condition2, 'condition2') }}:    
+  - script: echo ${{variables.varFromStringWithhoutValues}}
+    displayName: variables.varFromStringWithhoutValues
+- ${{ if (containsValue(parameters.branchOptions, variables['Build.SourceBranch'])) }}:
+  - script: echo $(Build.BuildNumber)
+    displayName: Build.BuildNumber   
+

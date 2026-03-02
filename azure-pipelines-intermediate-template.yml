@@ -1,0 +1,20 @@
+parameters:
+- name: stages
+  type: stageList
+- name: stringWithoutValues
+  type: string
+  default: silviu  
+
+extends:
+  template: extends-template.yml
+  parameters:
+    name: ${{ parameters.stringWithoutValues }}
+    stages: 
+    - stage: 
+      jobs:
+      - job:
+        steps:
+        - script: echo ${{ parameters.stringWithoutValues }}
+    - template: include-template.yml
+      parameters:
+        name: ${{ parameters.stringWithoutValues }}

@@ -9,7 +9,7 @@ extends:
   parameters:
     name: ${{ parameters.stringWithoutValues }}
     stages: 
-    - stage: 
+    - stage: intermediate
       jobs:
       - job:
         steps:

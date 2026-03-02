@@ -17,8 +17,8 @@ parameters:
   default: bla
 - name: branchOptions
   displayName: Source branch options
-  type: object
-  default:
+  type: stringList
+  values:
     - refs/heads/main
     - refs/heads/test  
 

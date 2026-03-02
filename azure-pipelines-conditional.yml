@@ -14,6 +14,7 @@ parameters:
   default: false
 - name: condition2
   type: string  
+  default: bla
 - name: branchOptions
   displayName: Source branch options
   type: object
@@ -23,7 +24,7 @@ parameters:
 
 variables:
   varFromStringWithhoutValues: ${{ parameters.stringWithoutValues}}
-  varWithFormatTemplate: ${{ format('Hello {0} {1}', parameters.stringWithoutValues, parameters.stringWithValues )}}
+  varWithFormatTemplate: ${{ format('Hello {0}', parameters.stringWithoutValues)}}
 
 steps:
 - ${{ if parameters.condition1 }}:
@@ -32,9 +33,9 @@ steps:
 - ${{ if eq(parameters.condition2, 'condition2') }}:    
   - script: echo ${{variables.varFromStringWithhoutValues}}
     displayName: variables.varFromStringWithhoutValues
-- ${{ if (containsValue(parameters.branchOptions, variables['Build.SourceBranch'])) }}:
+- ${{ if containsValue(parameters.branchOptions, variables['Build.SourceBranch']) }}:
   - script: echo $(Build.BuildNumber)
     displayName: Build.BuildNumber 
-- ${{ if (containsValue(parameters.branchOptions, 'refs/heads/pulls/1')) }}:    
+- ${{ if containsValue(parameters.branchOptions, 'refs/heads/pulls/1') }}:    
   - script: echo $(varWithFormatTemplate)
     displayName: varWithFormatTemplate

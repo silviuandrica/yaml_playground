@@ -23,6 +23,7 @@ parameters:
 
 variables:
   varFromStringWithhoutValues: ${{ parameters.stringWithoutValues}}
+  varWithFormatTemplate: ${{ format('Hello {0} {1}', parameters.stringWithoutValues, parameters.stringWithValues )}}
 
 steps:
 - ${{ if parameters.condition1 }}:
@@ -33,5 +34,7 @@ steps:
     displayName: variables.varFromStringWithhoutValues
 - ${{ if (containsValue(parameters.branchOptions, variables['Build.SourceBranch'])) }}:
   - script: echo $(Build.BuildNumber)
-    displayName: Build.BuildNumber   
-
+    displayName: Build.BuildNumber 
+- ${{ if (containsValue(parameters.branchOptions, 'refs/heads/pulls/1')) }}:    
+  - script: echo $(varWithFormatTemplate)
+    displayName: varWithFormatTemplate

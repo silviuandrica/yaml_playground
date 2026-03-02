@@ -1,0 +1,28 @@
+trigger: none
+
+name: $(Date:yyyyMMdd).$(Rev:r) ${{ parameters.stringWithoutValues }}
+
+parameters:
+- name: stringWithoutValues
+  type: string
+  default: silviu
+- name: stringWithValues
+  type: string  
+  default: value1
+  values:
+  - value1
+  - value2
+
+variables:
+  varFromStringWithhoutValues: ${{ parameters.stringWithoutValues}}
+  varWithFormatTemplate: ${{ format('Hello {0} {1}', parameters.stringWithoutValues, parameters.stringWithValues )}}
+  varWithFormatRuntime: $[ format('Hello {0} {1}', '${{parameters.stringWithoutValues}}', '${{parameters.stringWithValues}}' ) ]
+  
+extends:
+  template: azure-pipelines-intermediate-template.yml
+  parameters:
+    name: ${{ parameters.stringWithoutValues }}
+    stages: 
+    - template: include-template.yml
+      parameters:
+        name: ${{ parameters.stringWithoutValues }}

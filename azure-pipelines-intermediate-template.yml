@@ -3,7 +3,6 @@ parameters:
   type: stageList
 - name: stringWithoutValues
   type: string
-  default: silviu  
 
 extends:
   template: extends-template.yml

@@ -1,0 +1,12 @@
+parameters:
+- name: purpose
+  type: string
+  default: Testing
+
+stages:
+- stage: 
+  displayName: Working on ${{parameters.purpose}}
+  jobs:
+  - job:
+    steps:
+    - script: echo $(System.StageDisplayName)

@@ -4,6 +4,9 @@ parameters:
 - name: stages
   type: stageList
 
+pool:
+  vmImage: ubuntu-latest
+  
 stages:
 - stage: extends
   jobs:

@@ -4,19 +4,6 @@ parameters:
 - name: stages
   type: stageList
 
-resources:
-  repositories:
-    - repository: myRepo
-      name: Yaml Analyzer Test
-      type: git
-
-schedules:
-  - cron: '* * * * *'
-    displayName: Test
-    branches:
-      include:
-        - main
-
 stages:
 - stage: extends
   jobs:

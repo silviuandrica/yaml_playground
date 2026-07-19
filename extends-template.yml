@@ -4,6 +4,12 @@ parameters:
 - name: stages
   type: stageList
 
+resources:
+  repositories:
+    - repository: myRepo
+      name: Yaml Analyzer Test
+      type: git
+
 stages:
 - stage: extends
   jobs:

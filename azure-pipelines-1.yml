@@ -10,4 +10,6 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo $(name)
+- script: echo $(settable)
+- script: echo $(notSettable)
+- script: echo $(notDefined)
